@@ -13,7 +13,7 @@ export default class AddCommentForm extends Component {
     };
 
     handleSubmit = (event) => {
-        console.log(this.state)
+        // console.log(this.state)
         event.preventDefault();
         fetch("http://localhost:3000/comments", {
             method: "POST",
@@ -21,8 +21,6 @@ export default class AddCommentForm extends Component {
                 "Content-Type": "application/json",
                 Accept: "application/json",
                 mode: "no-cors"
-                // "Access-Control-Allow-Origin" : "*",
-                // "Access-Control-Allow-Credentials" : true 
             },
             body: JSON.stringify({ 
                 comment: 

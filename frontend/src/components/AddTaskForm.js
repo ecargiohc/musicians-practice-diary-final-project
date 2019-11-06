@@ -25,8 +25,6 @@ export default class AddTaskForm extends Component {
                 "Content-Type": "application/json",
                 Accept: "application/json",
                 mode: "no-cors"
-                // "Access-Control-Allow-Origin" : "*",
-                // "Access-Control-Allow-Credentials" : true 
             },
             body: JSON.stringify({ 
                 task: 
@@ -55,8 +53,6 @@ export default class AddTaskForm extends Component {
                 "Content-Type": "application/json",
                 Accept: "application/json",
                 mode: "no-cors"
-                // "Access-Control-Allow-Origin" : "*",
-                // "Access-Control-Allow-Credentials" : true 
             },
             body: JSON.stringify({
                 "user_id": 1,

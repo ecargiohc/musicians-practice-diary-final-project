@@ -37,7 +37,6 @@ export default class AddMediaForm extends Component {
     };
     
 render() {
-    const { name, url, user_id } = this.state
     return(
         <Form onSubmit={this.handleSubmit}>
             <Form.Group widths='equal'>

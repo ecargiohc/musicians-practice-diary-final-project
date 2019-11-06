@@ -10,7 +10,7 @@ class MediaContainer extends Component {
         this.state = {
                 media: [],
                 comments: [],
-                displayMedia: {}
+                displayMedia: []
         }
     };
 
@@ -22,13 +22,14 @@ class MediaContainer extends Component {
             .then(resp => resp.json())
             .then(data => {
             this.setState({
-                media: data
+                media: data,
+                displayMedia: data
             });
         });
     };
 
     deleteMedia = id => {
-    console.log(id)
+    // console.log(id)
     this.setState({
         media: this.state.media.filter(m => m !== id)
     })
@@ -44,14 +45,24 @@ class MediaContainer extends Component {
     };
 
     filterMedia = (type) => {
+        // console.log("displayedMedia", this.state.displayMedia);
+        // console.log("media", this.state.media);
+        // haddebugger;
         if (type !== "All") {
+            let array = this.state.media.filter(med => {
+                return med.user.instrument === type
+            }
+                );
+            // console.log(array)
+            // haddebugger;
             this.setState({
-                displayMedia: this.state.media.user.filter(u => u.instrument === type)
+                displayMedia: array
               })
             }
             else {
+                // alert message?
               this.setState({
-                displayMedia: this.state.media.user.instrument
+                displayMedia: this.state.displayMedia
               })
             };
     };
@@ -73,6 +84,7 @@ class MediaContainer extends Component {
                     filterMedia={this.filterMedia}/>
                     <MediaTable 
                     media={this.state.media} 
+                    displayMedia={this.state.displayMedia}
                     // delete only works on refresh
                     deleteMedia={this.deleteMedia}
                     fetchComments={this.fetchComments}

@@ -6,13 +6,6 @@ import { Button } from 'semantic-ui-react';
 import { Embed } from 'semantic-ui-react'
 
 class MediaTable extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //             media: [],
-    //             displayMedia: []
-    //     }
-    // };
     state = {
         displayMedia: []
     }
@@ -24,7 +17,7 @@ fetchDelete = (event) => {
     event.preventDefault();
     // debugger
     if (event) {
-    console.log(event.target.id)
+    // console.log(event.target.id)
     fetch(`http://localhost:3000/media/${event.target.id}`, {
     method: "DELETE", 
     headers: {
@@ -52,11 +45,10 @@ addComment = (event) => {
 };
 
     render() {
+        // console.log("media", this.props.media)
+        // console.log("display", this.props.displayMedia)
         return (
         <table>
-            {/* <MediaSearchBar 
-            filterMedia={this.filterMedia}
-            /> */}
             <thead>
             <tr>
                 <th>Title</th>
@@ -65,8 +57,8 @@ addComment = (event) => {
             </tr>
             </thead>
             <tbody>
-            {this.props.media.length > 0 ? (
-                this.props.media.map(m => (
+            {this.props.displayMedia.length > 0 ? (
+                this.props.displayMedia.map(m => (
                 <tr key={m.id}>
                     {/* or allow them to upload file */}
                     <td>{m.name}</td>

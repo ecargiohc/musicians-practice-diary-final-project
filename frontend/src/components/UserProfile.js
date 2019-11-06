@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { Grid, Segment, Label, Button } from 'semantic-ui-react';
-import Img from 'react-image';
+// import Img from 'react-image';
 
 export default class UserProfile extends Component {
     state = {
