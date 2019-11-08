@@ -29,7 +29,8 @@ class UserContainer extends Component {
         return(
             <div>
               <UserProfile 
-              currentUser={this.state.currentUser}/>
+              currentUser={this.state.currentUser}
+              />
               {/* <UserTaskContainer /> */}
             {/* "Hello from User Container; is this page necessary? Not really..."
             {this.state.users.map(user => {

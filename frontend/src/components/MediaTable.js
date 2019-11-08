@@ -18,7 +18,7 @@ fetchDelete = (event) => {
     // debugger
     if (event) {
     // console.log(event.target.id)
-    fetch(`http://localhost:3000/media/${event.target.id}`, {
+    fetch(`http://localhost:3000/api/v1/media/${event.target.id}`, {
     method: "DELETE", 
     headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ fetchDelete = (event) => {
 };
 addComment = (event) => {
     event.preventDefault();
-    fetch("http://localhost:3000/comments", {
+    fetch("http://localhost:3000/api/v1/comments", {
         method: "POST", 
         headers: {
             "Content-Type": "application/json",

@@ -13,7 +13,7 @@ class SubTaskContainer extends Component {
         this.fetchSubTasks();
       };
       fetchSubTasks = () => {
-        fetch("http://localhost:3000/sub_tasks")
+        fetch("http://localhost:3000/api/v1/sub_tasks")
           .then(resp => resp.json())
           .then(data => {
             this.setState({

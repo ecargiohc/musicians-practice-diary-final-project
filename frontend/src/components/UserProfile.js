@@ -9,7 +9,7 @@ export default class UserProfile extends Component {
     };
 
     fetchCurrentUserTasks = () => {
-        fetch("http://localhost:3000/user_tasks/1")
+        fetch("http://localhost:3000/api/v1/user_tasks/1")
           .then(resp => resp.json())
           .then(data => {
             this.setState({

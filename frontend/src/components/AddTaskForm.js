@@ -68,7 +68,7 @@ export default class AddTaskForm extends Component {
     render() {
         return(
             <Form onSubmit={this.handleSubmit}>
-                USERTASKFORM
+                {/* USERTASKFORM */}
             <Form.Group widths='equal'>
                 <Form.Input 
                 fluid label="Scales" 

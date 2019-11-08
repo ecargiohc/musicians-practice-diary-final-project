@@ -62,7 +62,7 @@ class MediaContainer extends Component {
             else {
                 // alert message?
               this.setState({
-                displayMedia: this.state.displayMedia
+                displayMedia: this.state.media
               })
             };
     };

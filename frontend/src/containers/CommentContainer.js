@@ -26,7 +26,7 @@ class CommentContainer extends Component {
     render() {
         return(
             <div>
-                COMMENT CONTAINER
+                {/* COMMENT CONTAINER */}
                 <ViewComment 
                 comments={this.state.comments}/>
                 {/* <AddCommentForm 

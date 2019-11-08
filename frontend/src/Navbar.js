@@ -10,13 +10,33 @@ const link = {
   color: 'black',
 };
  
+// const currentUser = this.props.currentUser;
+
+// const loggedIn = !!this.props.currentUser.id;
 class Navbar extends React.Component {
+
   render() {
     return (
       <DropdownMenu>
       <div>
         <div className="menu-button">
         </div>
+        {/* 11/7/19 */}
+        {/* below, now moved to HomePage */}
+            {/* {!!this.props.currentUser.id ? (
+              <a className="item">Welcome {this.props.currentUser.username}</a>
+            ) : null } */}
+        {!!this.props.currentUser.id ? (
+          <a className="item">
+            <div onClick={() => {
+              this.props.handleLogout();
+              this.props.history.push('/login');
+            }}
+            className="ui primary button">
+              Sign Out
+            </div>
+        </a> ) : (
+        // )}
         <MenuItem text="Login"
           location="/login"
           exact
@@ -24,7 +44,8 @@ class Navbar extends React.Component {
           activeStyle={{
             background: 'green'
           }}
-        ></MenuItem>
+        ></MenuItem> ) }
+        {/*  */}
         <MenuItem text="Current User"
           location="/current_user"
           exact

@@ -23,7 +23,7 @@ class UserTaskContainer extends Component {
 
     fetchTasks = () => {
         // console.log("HEY! fetch TASKS")
-        fetch("http://localhost:3000/tasks")
+        fetch("http://localhost:3000/api/v1/tasks")
             .then(resp => resp.json())
             .then(data => {
             this.setState({
@@ -33,7 +33,7 @@ class UserTaskContainer extends Component {
     };
       
     fetchSubTasks = () => {
-        fetch("http://localhost:3000/sub_tasks")
+        fetch("http://localhost:3000/api/v1/sub_tasks")
             .then(resp => resp.json())
             .then(data => {
                 this.setState({
@@ -104,20 +104,20 @@ class UserTaskContainer extends Component {
     render() {
         return(
             <div>
-                THIS IS USERTASKCONTAINER
+                {/* THIS IS USERTASKCONTAINER */}
                 <br></br>
-                <AddTaskForm createLinks={this.createLinks} fetchTasks={this.fetchTasks}
+                {/* <AddTaskForm createLinks={this.createLinks} fetchTasks={this.fetchTasks}
                 updateUserTasks={this.props.updateUserTasks}
-                />
+                /> */}
                 <ul>
                     {this.createList()}
                 </ul>
-                <TaskNoteContainer />
+                {/* <TaskNoteContainer /> */}
                 {/* <CurrentUserTask
                 user_tasks={this.props.user_tasks}/> */}
-                <SubTaskContainer />
+                {/* <SubTaskContainer />
                 <AddSubTaskForm fetchSubTasks={this.fetchSubTasks} 
-                />
+                /> */}
                 <br></br>
             </div>
         )

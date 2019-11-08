@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddTaskNoteForm from '../components/AddTaskNoteForm';
+import { ListGroup } from "react-bootstrap";
 
 class TaskNoteContainer extends Component {
   constructor() {
@@ -17,7 +18,7 @@ class TaskNoteContainer extends Component {
     this.fetchTaskNotes();
   };
   fetchTaskNotes = () => {
-    fetch("http://localhost:3000/task_notes")
+    fetch("http://localhost:3000/api/v1/task_notes")
       .then(resp => resp.json())
       .then(data => {
         this.setState({
@@ -28,7 +29,7 @@ class TaskNoteContainer extends Component {
 
   createNote = (newNote) => {
     console.log(this.state)
-    fetch("http://localhost:3000/task_notes", {
+    fetch("http://localhost:3000/api/v1/task_notes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +61,7 @@ class TaskNoteContainer extends Component {
 
   editTaskNote = (editedNote) => {
     console.log(editedNote)
-    fetch(`http://localhost:3000/task_notes/${editedNote.id}`, {
+    fetch(`http://localhost:3000/api/v1/task_notes/${editedNote.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -90,6 +91,7 @@ class TaskNoteContainer extends Component {
     return (
       <div>
         {/* TASKNOTE Container */}
+        {/* <List.Group> */}
         {this.state.task_notes.map(n => {
           return <ul>
             Objectives: {n.objectives}<br></br>

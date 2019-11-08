@@ -1,8 +1,28 @@
 class ApplicationController < ActionController::API
-    # before_action :authorized
+    before_action :authorized
 
     def encode_token(payload)
-        JWT.encode(payload, "secret")
+        puts "this is encode_token method"
+        JWT.encode(payload, "secret", "HS256")
+    end
+
+    # def token
+    #     request.headers['Authorization']
+    # end
+
+    def auth_header
+        request.headers['Authorization']
+    end
+
+    def decoded_token
+        if auth_header
+            token = auth_header.split(' ')[1]
+            begin
+                JWT.decode(token, "secret", true, {algorithm: 'HS256'})
+            rescue JWT::DecodeError
+                nil
+            end
+        end
     end
 
     def authorized
@@ -20,18 +40,8 @@ class ApplicationController < ActionController::API
         end
     end
 
-    def decoded_token
-        if auth_header
-            token = auth_header.split(' ')[1]
-            begin
-                JWT.decode(token, "secret", true, algorithm: 'HS256')
-            rescue JWT::DecodeError
-                nil
-            end
-        end
-    end
-
-    def auth_header
-        request.headers['Authorization']
-    end
+    # def user_id
+    #     # 11/7/19
+    #     decoded_token.first['user_id']
+    # end
 end
