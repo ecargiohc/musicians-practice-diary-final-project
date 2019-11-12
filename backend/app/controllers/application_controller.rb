@@ -26,6 +26,7 @@ class ApplicationController < ActionController::API
     end
 
     def authorized
+        puts auth_header
         render json: {message: "Not logged in son"}, status: :unauthorized unless logged_in?
     end
 
@@ -35,7 +36,9 @@ class ApplicationController < ActionController::API
 
     def current_user
         if decoded_token
+            puts "XXXXXXXXXXX"
             user_id = decoded_token[0]['user_id']
+            puts user_id
             @user = User.find(user_id)
         end
     end

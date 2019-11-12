@@ -1,16 +1,30 @@
 const API_ROOT = `http://localhost:3000/api/v1`;
 const token = localStorage.getItem('token');
-
 const headers = {
     'Content-Type': 'application/json', 
     Accepts: 'application/json', 
-    Authorization: token
+    Authorization: 'Bearer ' + token
 };
 
 const getUserTasks = () => {
     return fetch(`${API_ROOT}/user_tasks/` , {headers: headers}).then(res => res.json())
 };
 
+const getTaskNotes = () => {
+    return fetch(`${API_ROOT}/task_notes/`, {headers: headers}).then(res => res.json())
+};
+
+const getSubTasks = () => {
+    return fetch(`${API_ROOT}/sub_tasks/`, {headers: headers}).then(res => res.json())
+}
+
+const getMedia = () => {
+    return fetch(`${API_ROOT}/media/` , {headers: headers}).then(res => res.json())
+};
+const getComments = () => {
+    return fetch(`${API_ROOT}/comments/` , {headers: headers}).then(res => res.json())
+};
+ 
 const login = data => {
     return fetch(`${API_ROOT}/login`, {
         method: 'POST', 
@@ -32,6 +46,18 @@ export const api = {
     },
     user_tasks: {
         getUserTasks
+    },
+    media: {
+        getMedia
+    },
+    comments: {
+        getComments
+    },
+    task_notes: {
+        getTaskNotes
+    },
+    sub_tasks: {
+        getSubTasks
     }
 };
 

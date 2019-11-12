@@ -20,7 +20,7 @@ export default class AddSubTaskForm extends Component {
     handleSubmit = (event) => {
         // console.log(this.state)
         event.preventDefault();
-        fetch("http://localhost:3000/sub_tasks", {
+        fetch("http://localhost:3000/api/v1/sub_tasks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -48,7 +48,7 @@ export default class AddSubTaskForm extends Component {
     render() {
         return(
             <Form onSubmit={this.handleSubmit}>
-                SUBTASKFORM
+                SUBTASK FORM
             <Form.Group widths='equal'>
                 <Form.Input 
                 fluid label="Tempo" 

@@ -14,18 +14,18 @@ class TaskNoteContainer extends Component {
     }
   };
 
-  componentDidMount() {
-    this.fetchTaskNotes();
-  };
-  fetchTaskNotes = () => {
-    fetch("http://localhost:3000/api/v1/task_notes")
-      .then(resp => resp.json())
-      .then(data => {
-        this.setState({
-          task_notes: data
-        });
-      });
-  };
+  // componentDidMount() {
+  //   this.fetchTaskNotes();
+  // };
+  // fetchTaskNotes = () => {
+  //   fetch("http://localhost:3000/api/v1/task_notes")
+  //     .then(resp => resp.json())
+  //     .then(data => {
+  //       this.setState({
+  //         task_notes: data
+  //       });
+  //     });
+  // };
 
   createNote = (newNote) => {
     console.log(this.state)
@@ -48,7 +48,6 @@ class TaskNoteContainer extends Component {
     })
     // .then(res => res.json())
       .then(() => this.fetchTaskNotes())
-    // or .then(this.fetchTaskNotes())! async...
   };
 
   startEditingNote = (note) => {
@@ -56,8 +55,7 @@ class TaskNoteContainer extends Component {
       editing: true,
       selectedNote: note
     })
-  }
-
+  };
 
   editTaskNote = (editedNote) => {
     console.log(editedNote)

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListGroup } from "react-bootstrap";
 
-const ViewComment = props => {
+const ViewComment = (props) => {
 
     return(
         <div>
@@ -14,13 +14,6 @@ const ViewComment = props => {
                     }
                 )}
             </ListGroup>
-            {/* VIEWCOMMENT COMPONENT */}
-            {/* {props.comments.map(c => {
-                return <ul key={c.id}>
-                    {c.feedback}
-                    </ul>
-                }
-            )} */}
         </div>
     )
 };

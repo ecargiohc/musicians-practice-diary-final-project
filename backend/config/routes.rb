@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  # resources :user_tasks
-  # resources :sub_tasks
-  # resources :task_notes
-  # resources :tasks
-  # resources :comments
-  # resources :media
 
   namespace :api do
     namespace :v1 do
@@ -15,6 +9,8 @@ Rails.application.routes.draw do
       resources :comments
       resources :media
       post '/v1_user_tasks', to: 'user_tasks#get_tasks'
+      post '/v1_user_media', to: 'media#get_user_media'
+      post '/v1_task_notes', to: 'task_notes#get_task_notes'
       post '/login', to: 'auth#create'
       get '/current_user', to: 'auth#show'
       # get '/profile', to: 'users#show'
@@ -25,7 +21,5 @@ Rails.application.routes.draw do
   
   # post '/login', to: 'auth#create'
   # post '/profile', to: 'users#profile'
-
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

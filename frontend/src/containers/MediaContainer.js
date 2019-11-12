@@ -3,6 +3,8 @@ import CommentContainer from './CommentContainer';
 import AddMediaForm from '../components/AddMediaForm';
 import MediaTable from '../components/MediaTable';
 import MediaSearchBar from '../components/MediaSearchBar';
+// 11/11: 11:30a
+import { api } from "../services/api";
 
 class MediaContainer extends Component {
     constructor() {
@@ -15,17 +17,17 @@ class MediaContainer extends Component {
     };
 
     componentDidMount() {
-        this.fetchMedia();
-      };
-    fetchMedia = () => {
-        fetch("http://localhost:3000/media")
-            .then(resp => resp.json())
-            .then(data => {
-            this.setState({
-                media: data,
-                displayMedia: data
-            });
-        });
+        this.fetchAllMedia();
+    }
+    fetchAllMedia = () => {
+        api.media.getMedia()
+        .then(data => {
+          console.log(data)
+          this.setState({ 
+            media: data,
+            displayMedia: data
+          })
+        })
     };
 
     deleteMedia = id => {
@@ -33,15 +35,6 @@ class MediaContainer extends Component {
     this.setState({
         media: this.state.media.filter(m => m !== id)
     })
-    };
-
-    fetchComments = () => {
-        fetch("http://localhost:3000/media")
-        .then(resp => resp.json())
-        .then(data => {
-            this.setState({
-                comments: data })
-        })
     };
 
     filterMedia = (type) => {
@@ -87,7 +80,6 @@ class MediaContainer extends Component {
                     displayMedia={this.state.displayMedia}
                     // delete only works on refresh
                     deleteMedia={this.deleteMedia}
-                    fetchComments={this.fetchComments}
                     // link to comment container
                     />
                     </div>

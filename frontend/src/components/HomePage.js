@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { api } from '../services/api';
 import DateFile from './DateFile';
+import AddTaskForm from "./AddTaskForm";
+import AddTaskNoteForm from "./AddTaskNoteForm";
+import AddSubTaskForm from "./AddSubTaskForm";
 
 export default class HomePage extends Component {
   state = {
@@ -16,10 +19,10 @@ export default class HomePage extends Component {
             }
           });
         };
-    }
+    };
 
     render() {
-      console.log(this.props.user_tasks)
+      // console.log(this.props.media)
         return (
           <div>
             <DateFile />
@@ -27,7 +30,9 @@ export default class HomePage extends Component {
             ( <a className="item">
               Welcome {this.props.currentUser.username} !</a>
             ) : null }
-            
+            <AddTaskNoteForm />
+            <AddTaskForm />
+            <AddSubTaskForm />
           </div>
         )
     }

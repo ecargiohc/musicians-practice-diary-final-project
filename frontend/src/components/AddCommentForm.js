@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Input } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 
 export default class AddCommentForm extends Component {
     state = {
@@ -15,7 +15,7 @@ export default class AddCommentForm extends Component {
     handleSubmit = (event) => {
         // console.log(this.state)
         event.preventDefault();
-        fetch("http://localhost:3000/comments", {
+        fetch("http://localhost:3000/api/v1/comments", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

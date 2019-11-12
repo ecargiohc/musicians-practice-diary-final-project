@@ -1,5 +1,10 @@
 class Api::V1::TaskNotesController < ApplicationController
 
+    # def get_task_notes
+    #     @task_notes = TaskNote.where(user_task_id: @user_task_id.id)
+    #     render :json => @task_notes
+    # end
+
     def index
         @task_notes = TaskNote.all
         render :json => @task_notes

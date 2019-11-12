@@ -19,7 +19,7 @@ export default class AddTaskForm extends Component {
     handleSubmit = (event) => {
         console.log(this.state)
         event.preventDefault();
-        fetch("http://localhost:3000/tasks", {
+        fetch("http://localhost:3000/api/v1/tasks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export default class AddTaskForm extends Component {
     };
 
     createUserTask = (data) => {
-        fetch("http://localhost:3000/user_tasks", {
+        fetch("http://localhost:3000/api/v1/user_tasks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

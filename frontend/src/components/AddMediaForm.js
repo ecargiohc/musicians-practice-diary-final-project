@@ -15,7 +15,7 @@ export default class AddMediaForm extends Component {
     handleSubmit = (event) => {
         console.log(this.state)
         event.preventDefault();
-        fetch("http://localhost:3000/media", {
+        fetch("http://localhost:3000/api/v1/media", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

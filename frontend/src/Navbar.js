@@ -46,14 +46,14 @@ class Navbar extends React.Component {
           }}
         ></MenuItem> ) }
         {/*  */}
-        <MenuItem text="Current User"
+        {/* <MenuItem text="Current User"
           location="/current_user"
           exact
           style={link}
           activeStyle={{
             background: 'green'
           }}
-        ></MenuItem>
+        ></MenuItem> */}
         {/* <MenuItem text="Users"
           location="/users"
           exact
@@ -62,15 +62,15 @@ class Navbar extends React.Component {
             background: 'green'
           }}
         ></MenuItem> */}
-        {/* <MenuItem text="Tasks"
-          location="/tasks"
+        <MenuItem text="Home"
+          location="/"
           exact
           style={link}
           activeStyle={{
             background: 'green'
           }}
-        ></MenuItem> */}
-        <MenuItem text="Media"
+        ></MenuItem>
+        <MenuItem text="Media Forum"
           location="/media"
           exact
           style={link}
@@ -78,7 +78,7 @@ class Navbar extends React.Component {
             background: 'green'
           }}
         ></MenuItem>
-        <MenuItem text="UserTasks"
+        <MenuItem text="Your Entries"
           location="/user_tasks"
           exact
           style={link}
@@ -86,15 +86,15 @@ class Navbar extends React.Component {
             background: 'green'
           }}
         ></MenuItem>
-        <MenuItem text="Comments"
-          location="/comments"
-          exact
-          style={link}
-          activeStyle={{
-            background: 'green'
-          }}
-        ></MenuItem>
-        <MenuItem text="SubTask"
+  {/* <MenuItem text="See YOUR Comments"
+    location="/comments"
+    exact
+    style={link}
+    activeStyle={{
+      background: 'green'
+    }}
+  ></MenuItem> */}
+        {/* <MenuItem text="SubTask"
           location="/sub_tasks"
           exact
           style={link}
@@ -109,7 +109,7 @@ class Navbar extends React.Component {
           activeStyle={{
             background: 'green'
           }}
-        ></MenuItem>
+        ></MenuItem> */}
       </div>
       </DropdownMenu>
     )

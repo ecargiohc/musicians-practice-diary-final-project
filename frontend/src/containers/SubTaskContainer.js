@@ -9,18 +9,18 @@ class SubTaskContainer extends Component {
         }
     };
     
-    componentDidMount() {
-        this.fetchSubTasks();
-      };
-      fetchSubTasks = () => {
-        fetch("http://localhost:3000/api/v1/sub_tasks")
-          .then(resp => resp.json())
-          .then(data => {
-            this.setState({
-              sub_tasks: data
-            });
-          });
-      };
+    // componentDidMount() {
+    //     this.fetchSubTasks();
+    //   };
+    //   fetchSubTasks = () => {
+    //     fetch("http://localhost:3000/api/v1/sub_tasks")
+    //       .then(resp => resp.json())
+    //       .then(data => {
+    //         this.setState({
+    //           sub_tasks: data
+    //         });
+    //       });
+    //   };
 
     render() {
         return(

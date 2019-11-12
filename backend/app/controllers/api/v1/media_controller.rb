@@ -1,7 +1,13 @@
 class Api::V1::MediaController < ApplicationController
 
+    def get_user_media
+        @medias = Media.where(user_id: @user.id)
+        render :json => @medias
+    end
+
     def index
         @medias = Media.all
+        # @medias = Media.where(user_id: @user.id)
         render :json => @medias
     end
     

@@ -29,20 +29,26 @@ import { lightTheme, darkTheme } from './theme';
 import { GlobalStyles } from './global';
 import { useDarkMode } from './useDarkMode';
 import Toggle from './Toggle';
+// 11/11: 11am
+import Details from './components/Details';
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
       user_tasks: [],
+      task_notes: [],
+      media: [],
+      displayMedia: [],
       tasks: [],
+      sub_tasks: [],
       auth: {
         user: {}
       },
       theme: 'light'
     }
   };
-  
+
   // something =() => {
   //   if (!componentMounted) {
   //     // return <div />
@@ -68,6 +74,8 @@ export default class App extends Component {
 
   componentDidMount() {
     this.fetchUserTasks();
+    this.fetchTaskNotes();
+    this.fetchSubTasks();
     const token = localStorage.getItem("token");
     if (!token) {
       console.log("no token found");
@@ -104,30 +112,54 @@ export default class App extends Component {
     })
     .then(resp => resp.json())
     .then(data => this.setState({ user_tasks: data}))
-      // .then(resp => resp.json())
-      // .then(data => {
-      //   this.setState({
-      //     user_tasks: data
-      //   });
-      // });
   };
-
   updateUserTasks = (data) => {
     console.log(data);
     this.setState({
       user_tasks: [...this.state.user_tasks, data]
     })
   };
-  
+
+  // fetchUserMedia = () => {
+  //   const user_id = this.state.auth.user.user_id;
+  //   console.log(user_id)
+  //   fetch("http://localhost:3000/api/v1/v1_user_media", {
+  //     method: "POST",
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Accept: 'application/json', 
+  //       Authorization: `Bearer ${localStorage.getItem('token')}`
+  //     },
+  //     body: JSON.stringify({ user_id })
+  //   })
+  //   .then(resp => resp.json())
+  //   .then(data => this.setState({ media: data}))
+  // };
+
+  fetchTaskNotes = () => {
+    api.task_notes.getTaskNotes()
+    .then(data => {
+      console.log(data)
+      this.setState({ task_notes: data})
+    })
+  };
+
+  fetchSubTasks = () => {
+    api.sub_tasks.getSubTasks()
+    .then(data => {
+      console.log(data)
+      this.setState({ sub_tasks: data})
+    })
+  };
 
   render(){
+    // api.task_notes.getTaskNotes()
   // const [theme, toggleTheme, componentMounted] = useDarkMode();
   // const themeMode = theme === 'light' ? lightTheme : darkTheme;
   // if (!componentMounted) {
-  //   return <div />
+  //   return <div /> 
   // };
     return (
-      
       <ThemeProvider
          theme={this.state.theme === 'light' ? lightTheme : darkTheme}
       >
@@ -155,12 +187,10 @@ export default class App extends Component {
             <HomePage 
             currentUser={this.state.auth.user}
             user_tasks={api.user_tasks.getUserTasks()}
+            task_notes={this.state.task_notes}
           /> )}} />
           {/* <Route exact path="/users" component={UserContainer} /> */}
         <Route exact path="/current_user" component={UserContainer} />
-          {/* <Route exact path="/tasks" component={TaskContainer} /> */}
-        {/* <Route exact path="/sub_tasks" component={SubTaskContainer} /> */}
-          {/* <Route exact path="/sub_task/:id" component={SubTaskContainer} /> */}
         <Route exact path="/user_tasks" 
           // component={UserTaskContainer} 
           render={() => {
@@ -170,12 +200,18 @@ export default class App extends Component {
                 tasks={this.state.tasks}
                 updateUserTasks={this.updateUserTasks}
               /> 
-              {/* <AddTaskForm 
-              updateUserTasks={this.updateUserTasks}
-              /> */}
               </div>);
             }}
           />
+          <Route exact path="/details/:user_task_id" render={props => {
+            return (
+              <Details
+              {...props}
+              task_notes={this.state.task_notes}
+              sub_tasks={this.state.sub_tasks}
+              />
+            )
+          }} />
           <Route exact path="/user_tasks/1"
           render={() => {
             return (
@@ -185,11 +221,10 @@ export default class App extends Component {
             )
           }}
           />
-          {/* <Route exact path="/task_notes" component={TaskNoteContainer} /> */}
           <Route exact path="/task_form" component={AddTaskForm} />
-          <Route exact path="/media" component={MediaContainer} />
-          <Route exact path="/add_comment" component={AddCommentForm} />
-          <Route exact path="/comments" component={CommentContainer} />
+          <Route exact path="/media" component={MediaContainer}
+          />
+          <Route exact path="/view_add_comment" component={CommentContainer} />
           <Route exact path="/user_tasks/current_user" 
           render={() => {
             return (
@@ -199,7 +234,6 @@ export default class App extends Component {
               />
             )
           }}
-          // component={CurrentUserTask} 
           />
         </div>
       </Router>

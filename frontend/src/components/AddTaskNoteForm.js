@@ -37,7 +37,6 @@ export default class AddTaskNoteForm extends Component {
     render() {
         return(
             <Form onSubmit={this.handleSubmit}>
-                TASKNOTEFORM
             <Form.Group widths='equal'>
                 <Form.Input 
                 fluid label="Objectives" 

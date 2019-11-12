@@ -45,8 +45,6 @@ addComment = (event) => {
 };
 
     render() {
-        // console.log("media", this.props.media)
-        // console.log("display", this.props.displayMedia)
         return (
         <table>
             <thead>
@@ -60,7 +58,7 @@ addComment = (event) => {
             {this.props.displayMedia.length > 0 ? (
                 this.props.displayMedia.map(m => (
                 <tr key={m.id}>
-                    {/* or allow them to upload file */}
+                    {/* allow them to upload file */}
                     <td>{m.name}</td>
                     <a href={m.url} target="_blank">{m.url}</a>
                     <td>{m.user.username}</td>
@@ -68,10 +66,9 @@ addComment = (event) => {
                     <button className="button muted-button">Edit</button>
                     <button className="button muted-button" id={m.id} onClick={(event) => this.fetchDelete(event)}>Delete</button>
                     {/* <Link to={`/comments/${m.id}`}>Comment</Link> */}
-                    <Button as={Link} to="/add_comment">
-                    Add Comment
+                    <Button as={Link} to="/view_add_comment">
+                    View/Add Comment
                     </Button>
-                    {/* <Link to={'/add_comment'}>Add Comment</Link> */}
                     </td>
                 </tr>
                 ))
