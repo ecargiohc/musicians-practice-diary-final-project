@@ -11,16 +11,10 @@ import { api } from "./services/api";
 import HomePage from './components/HomePage';
 
 import UserContainer from "./containers/UserContainer";
-import TaskContainer from './containers/TaskContainer';
-import SubTaskContainer from './containers/SubTaskContainer';
-import TaskNoteContainer from './containers/TaskNoteContainer';
 import UserTaskContainer from './containers/UserTaskContainer';
 import CurrentUserTask from './components/CurrentUserTask';
 import MediaContainer from './containers/MediaContainer';
 import CommentContainer from './containers/CommentContainer';
-import AddCommentForm from './components/AddCommentForm';
-import ViewComment from './components/ViewComment';
-import AddTaskForm from './components/AddTaskForm';
 import UserProfile from './components/UserProfile';
 
 // 11/7: 4pm
@@ -31,8 +25,13 @@ import { useDarkMode } from './useDarkMode';
 import Toggle from './Toggle';
 // 11/11: 11am
 import Details from './components/Details';
-
-export default class App extends Component {
+import AddTaskNoteForm from './components/AddTaskNoteForm';
+import AddSubTaskForm from './components/AddSubTaskForm';
+import TaskNoteContainer from './containers/TaskNoteContainer';
+import SignUpForm from './components/SignUpForm';
+// 11/12
+import { withRouter } from "react-router-dom";
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -76,6 +75,7 @@ export default class App extends Component {
     this.fetchUserTasks();
     this.fetchTaskNotes();
     this.fetchSubTasks();
+    this.fetchAllComments();
     const token = localStorage.getItem("token");
     if (!token) {
       console.log("no token found");
@@ -96,6 +96,8 @@ export default class App extends Component {
   logout = () => {
     localStorage.removeItem("token");
     this.setState({ auth: { user: {} } }, () => console.log(this.state.auth.user));
+    // this.props.location.push('/login');
+    window.location = 'http://localhost:3001/login'
   };
 
   fetchUserTasks = () => {
@@ -143,12 +145,35 @@ export default class App extends Component {
       this.setState({ task_notes: data})
     })
   };
+  updateTaskNotes = (data) => {
+    this.setState(
+          prevState => ({
+              task_notes: [...prevState.task_notes, data]
+          }))
+  };
 
   fetchSubTasks = () => {
     api.sub_tasks.getSubTasks()
     .then(data => {
       console.log(data)
       this.setState({ sub_tasks: data})
+    })
+  };
+  updateSubTasks = (data) => {
+    this.setState(
+      prevState => ({
+        sub_tasks: [...prevState.sub_tasks, data]
+      })
+    )
+  }
+
+  fetchAllComments = () => {
+    api.comments.getComments()
+    .then(data => {
+      console.log(data)
+      this.setState({ 
+        comments: data
+      })
     })
   };
 
@@ -182,23 +207,23 @@ export default class App extends Component {
           <Login {...props}
           handleLogin={this.login}/>
           } />
+        <Route exact path='/new_user' component={SignUpForm}/>
         <Route exact path="/" render={() => {
           return (
             <HomePage 
             currentUser={this.state.auth.user}
             user_tasks={api.user_tasks.getUserTasks()}
             task_notes={this.state.task_notes}
+            // fetchTaskNotes={this.fetchTaskNotes}
+            // fetchSubTasks={this.fetchSubTasks}
+            updateUserTasks={this.updateUserTasks}
           /> )}} />
-          {/* <Route exact path="/users" component={UserContainer} /> */}
-        <Route exact path="/current_user" component={UserContainer} />
         <Route exact path="/user_tasks" 
-          // component={UserTaskContainer} 
           render={() => {
             return ( <div>
               <UserTaskContainer
                 user_tasks={this.state.user_tasks}
                 tasks={this.state.tasks}
-                updateUserTasks={this.updateUserTasks}
               /> 
               </div>);
             }}
@@ -212,29 +237,40 @@ export default class App extends Component {
               />
             )
           }} />
-          <Route exact path="/user_tasks/1"
-          render={() => {
+          <Route exact path="/users"/>
+          <Route exact path="/addtasknote/:user_task_id" render={props => {
             return (
-              <UserProfile
-              current_user_tasks={this.state.current_user_tasks}
+              <AddTaskNoteForm
+              {...props}
+              fetchTaskNotes={this.fetchTaskNotes}
+              updateTaskNotes={this.updateTaskNotes}
               />
-            )
-          }}
-          />
-          <Route exact path="/task_form" component={AddTaskForm} />
-          <Route exact path="/media" component={MediaContainer}
-          />
-          <Route exact path="/view_add_comment" component={CommentContainer} />
-          <Route exact path="/user_tasks/current_user" 
-          render={() => {
+            )}}/>
+          <Route exact path="/addsubtask/:user_task_id" render={props => {
             return (
-              <CurrentUserTask 
-              current_user_task={this.current_user_task}
-              user_tasks={this.state.user_tasks}
+              <AddSubTaskForm 
+              {...props}
+              updateSubTasks={this.updateSubTasks}
               />
-            )
-          }}
+            )}}/>
+          <Route exact path="/media" render={props => {
+            return (
+              <MediaContainer
+              {...props}
+              currentUser={this.state.auth.user}
+              />
+            ) }}
           />
+          <Route exact path="/view_add_comment/:media_id" render={
+            props => { return (
+              <CommentContainer 
+              {...props}
+              comments={this.state.comments}
+              currentUser={this.state.auth.user}
+              fetchAllComments={this.state.fetchAllComments}
+              />
+            )}
+          } />
         </div>
       </Router>
       </>
@@ -242,4 +278,5 @@ export default class App extends Component {
    
     )
   }
-}
+};
+export default App;

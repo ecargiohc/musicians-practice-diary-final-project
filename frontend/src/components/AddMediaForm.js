@@ -5,7 +5,9 @@ export default class AddMediaForm extends Component {
     state = {
         name: "",
         url: "",
-        user_id: 1
+        auth: {
+            user: {}
+        }
     }
 
     handleChange = e => {
@@ -14,26 +16,28 @@ export default class AddMediaForm extends Component {
 
     handleSubmit = (event) => {
         console.log(this.state)
+        console.log(this.props.currentUser.id)
+        const user_id = this.props.currentUser.id
         event.preventDefault();
         fetch("http://localhost:3000/api/v1/media", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
-                mode: "no-cors"
-                // "Access-Control-Allow-Origin" : "*",
-                // "Access-Control-Allow-Credentials" : true 
+                mode: "no-cors", 
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({ 
                 media: 
                 {
                 name: this.state.name,
                 url: this.state.url, 
-                user_id: this.state.user_id
+                user_id: user_id
                 }
             })
         }).then(res => res.json())
-        .then(data => this.props.fetchMedia())
+        // .then(data => console.log(data))
+        .then(data => this.props.fetchAllMedia())
     };
     
 render() {

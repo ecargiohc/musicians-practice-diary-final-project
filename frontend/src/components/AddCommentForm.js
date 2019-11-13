@@ -4,8 +4,12 @@ import { Form } from 'semantic-ui-react';
 export default class AddCommentForm extends Component {
     state = {
         feedback: "",
-        media_id: 2,
-        user_id: 1
+        auth: {
+            user: {}
+        },
+        media: {}
+        // media_id: 2,
+        // user_id: 1
     };
 
     handleChange = e => {
@@ -13,25 +17,30 @@ export default class AddCommentForm extends Component {
     };
 
     handleSubmit = (event) => {
-        // console.log(this.state)
+        // console.log(this.props.media_id.media_id)
+        const user_id = this.props.currentUser.id
+        const media_id = this.props.media_id.media_id
         event.preventDefault();
         fetch("http://localhost:3000/api/v1/comments", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
-                mode: "no-cors"
+                mode: "no-cors", 
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({ 
-                comment: 
+                comments: 
                 {
-                    feedback: this.state.feedback,
-                    user_id: this.state.user_id, 
-                    media_id: this.state.media_id
+                    "feedback": this.state.feedback,
+                    "user_id": user_id, 
+                    "media_id": media_id
                 }
             })
         }).then(res => res.json())
-        .then(data => this.props.fetchComments())
+        .then(data => console.log(data))
+        // 11/12: 11:20A: NEED UPDATE FETCH METHOD. 
+        // .then(data => this.props.fetchAllComments())
     };
 
     render() {

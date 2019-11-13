@@ -23,7 +23,6 @@ class Api::V1::UserTasksController < ApplicationController
 
     def show
         @user_task = UserTask.find(params[:id])
-        
         render :json => @user_task
     end
 
@@ -33,6 +32,7 @@ class Api::V1::UserTasksController < ApplicationController
     end
 
     def create
+        # @user_tasks = UserTask.where(user_id: @user.id)
         @user_task = UserTask.new(user_task_params)
         @user_task.save!
         render :json => @user_task

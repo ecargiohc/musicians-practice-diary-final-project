@@ -1,8 +1,8 @@
 import React from 'react';
 import './Login.css';
-
+import { Link } from "react-router-dom";
 import { api } from './services/api';
-
+import SignUpForm from './components/SignUpForm';
 class Login extends React.Component {
     constructor() {
         super();
@@ -34,34 +34,12 @@ class Login extends React.Component {
             }
         })
     };
-
-    // login = (e) => {
-    //     e.preventDefault()
-    //     fetch('http://localhost:5000/login', {
-    //         method: 'POST',
-    //         headers: {
-    //             Accept: 'application/json',
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //             user: {
-    //                 username: this.state.username,
-    //                 password: this.state.password
-    //             }
-    //         })
-    //     })
-    //     .then(res => res.json())
-    //     .then(json => {
-    //         localStorage.setItem('token', json.jwt)
-    //     })
-    // };
     
     render() {
         const {fields} = this.state
         // console.log(this.props)
         return (
             <div className="center">
-                hello?!
                 {this.state.error ? <h1>Try again!</h1> : null}
                 <div className="card">
                     <h1>Login</h1>
@@ -85,6 +63,9 @@ class Login extends React.Component {
                             value="Login!"
                             type="submit"
                         />
+                        <Link 
+                            to='/new_user' 
+                        >Don't have an account?</Link>
                     </form>
                 </div>
             </div>

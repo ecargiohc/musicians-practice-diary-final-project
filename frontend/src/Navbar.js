@@ -29,14 +29,14 @@ class Navbar extends React.Component {
         {!!this.props.currentUser.id ? (
           <a className="item">
             <div onClick={() => {
+              // localStorage.clear();
               this.props.handleLogout();
-              this.props.history.push('/login');
+              // this.props.history.push('/login');
             }}
             className="ui primary button">
               Sign Out
             </div>
         </a> ) : (
-        // )}
         <MenuItem text="Login"
           location="/login"
           exact

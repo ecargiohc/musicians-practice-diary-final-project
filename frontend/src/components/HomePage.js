@@ -22,7 +22,6 @@ export default class HomePage extends Component {
     };
 
     render() {
-      // console.log(this.props.media)
         return (
           <div>
             <DateFile />
@@ -30,9 +29,17 @@ export default class HomePage extends Component {
             ( <a className="item">
               Welcome {this.props.currentUser.username} !</a>
             ) : null }
-            <AddTaskNoteForm />
-            <AddTaskForm />
-            <AddSubTaskForm />
+            {/* <AddTaskNoteForm 
+            currentUser={this.props.currentUser}
+            updateUserTasks={this.props.updateUserTasks}
+            /> */}
+            <AddTaskForm 
+            currentUser={this.props.currentUser}
+            updateUserTasks={this.props.updateUserTasks}
+            />
+            {/* <AddSubTaskForm 
+            currentUser={this.props.currentUser}
+            /> */}
           </div>
         )
     }

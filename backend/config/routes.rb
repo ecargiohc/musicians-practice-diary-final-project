@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :tasks
       resources :comments
       resources :media
+      resources :users
       post '/v1_user_tasks', to: 'user_tasks#get_tasks'
       post '/v1_user_media', to: 'media#get_user_media'
       post '/v1_task_notes', to: 'task_notes#get_task_notes'

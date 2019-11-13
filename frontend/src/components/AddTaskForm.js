@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Form, Input } from 'semantic-ui-react';
-
 export default class AddTaskForm extends Component {
     state = {
         scales: "",
@@ -9,7 +8,10 @@ export default class AddTaskForm extends Component {
         sight_reading: "",
         solo: "",
         concerto: "",
-        excerpts: ""
+        excerpts: "", 
+        auth: {
+            user: {}
+        }
     };
 
     handleChange = e => {
@@ -24,7 +26,8 @@ export default class AddTaskForm extends Component {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
-                mode: "no-cors"
+                mode: "no-cors",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({ 
                 task: 
@@ -47,15 +50,20 @@ export default class AddTaskForm extends Component {
     };
 
     createUserTask = (data) => {
+        // console.log(this.state.auth.user.user_id)
+        // const user_id = this.state.auth.user.user_id;
+        console.log(this.props.currentUser.id)
+        const user_id = this.props.currentUser.id
         fetch("http://localhost:3000/api/v1/user_tasks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
-                mode: "no-cors"
+                mode: "no-cors", 
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({
-                "user_id": 1,
+                "user_id": user_id,
                 "task_id": data.id
             })
         })
@@ -68,7 +76,7 @@ export default class AddTaskForm extends Component {
     render() {
         return(
             <Form onSubmit={this.handleSubmit}>
-                {/* USERTASKFORM */}
+                USERTASK FORM
             <Form.Group widths='equal'>
                 <Form.Input 
                 fluid label="Scales" 

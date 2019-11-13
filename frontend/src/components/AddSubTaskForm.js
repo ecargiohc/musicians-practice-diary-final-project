@@ -19,13 +19,18 @@ export default class AddSubTaskForm extends Component {
 
     handleSubmit = (event) => {
         // console.log(this.state)
+        // having the user_task_id and task_id be the same for now
+        // const user_task_id = this.props.match.params
+        const task_id = this.props.match.params
+        console.log(task_id)
         event.preventDefault();
         fetch("http://localhost:3000/api/v1/sub_tasks", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
-                mode: "no-cors"
+                mode: "no-cors", 
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({ 
                 sub_task: 
@@ -37,12 +42,12 @@ export default class AddSubTaskForm extends Component {
                     phrasing: this.state.phrasing,
                     style: this.state.style,
                     intonation: this.state.intonation,
-                    task_id: this.state.task_id
+                    task_id: task_id.user_task_id
                 }
             })
         }).then(res => res.json())
-        .then(data => console.log(data))
-        // .then(data => this.props.fetchSubTasks())
+        // .then(data => console.log(data))
+        .then(data => this.props.updateSubTasks(data))
     };
 
     render() {

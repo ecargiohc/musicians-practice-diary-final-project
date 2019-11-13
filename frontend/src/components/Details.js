@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import AddTaskNoteForm from './AddTaskNoteForm';
+import TaskNoteContainer from '../containers/TaskNoteContainer';
 
 const Details = (props) => {
 
@@ -7,6 +10,8 @@ const Details = (props) => {
     return (
         <div>
             tasknotes
+            <Link id={user_task_id} to={`/addtasknote/${user_task_id}`}>Add TaskNote</Link>
+
             {props.task_notes.map(n => {
                 if (user_task_id == n.user_task.id) {
                     console.log(n)
@@ -17,7 +22,8 @@ const Details = (props) => {
                 }
             })}
             <div>
-                subtasks
+            subtasks
+            <Link id={user_task_id} to={`/addsubtask/${user_task_id}`}>Add SubTask</Link>
             {props.sub_tasks.map(s => {
                     if (user_task_id == s.task.id) {
                         console.log(s)

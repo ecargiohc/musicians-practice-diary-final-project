@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CommentContainer from './CommentContainer';
 import AddMediaForm from '../components/AddMediaForm';
 import MediaTable from '../components/MediaTable';
 import MediaSearchBar from '../components/MediaSearchBar';
@@ -67,7 +66,8 @@ class MediaContainer extends Component {
                     <div className="flex-large">
                     <h2>Add Media</h2>
                     <AddMediaForm 
-                    fetchMedia={this.fetchMedia}
+                    fetchAllMedia={this.fetchAllMedia}
+                    currentUser={this.props.currentUser}
                     />
                     </div>
                     <div className="flex-large">

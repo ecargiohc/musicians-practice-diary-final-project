@@ -7,25 +7,12 @@ class TaskNoteContainer extends Component {
     super();
     this.state = {
       task_notes: [],
-      user_task_id: {},
+      user_task_id: [],
       // editing boolean used in child comp: AddNoteForm
       editing: false,
       selectedNote: {}
     }
   };
-
-  // componentDidMount() {
-  //   this.fetchTaskNotes();
-  // };
-  // fetchTaskNotes = () => {
-  //   fetch("http://localhost:3000/api/v1/task_notes")
-  //     .then(resp => resp.json())
-  //     .then(data => {
-  //       this.setState({
-  //         task_notes: data
-  //       });
-  //     });
-  // };
 
   createNote = (newNote) => {
     console.log(this.state)
@@ -34,7 +21,8 @@ class TaskNoteContainer extends Component {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        mode: "no-cors"
+        mode: "no-cors", 
+        Authorization: `Bearer ${localStorage.getItem('token')}`
       },
       body: JSON.stringify({
         task_note:
@@ -46,8 +34,9 @@ class TaskNoteContainer extends Component {
         }
       })
     })
-    // .then(res => res.json())
-      .then(() => this.fetchTaskNotes())
+    // .then(resp => resp.json())
+    .then(data => console.log(data))
+      // .then(() => this.props.fetchTaskNotes())
   };
 
   startEditingNote = (note) => {
@@ -78,18 +67,11 @@ class TaskNoteContainer extends Component {
       this.setState({editing: false})
       this.fetchTaskNotes()
     })
-    // below for edit form:
-    // .then(data => this.setState({
-    //   task_notes: this.state.task_notes.map(n => {
-    //     return n.id === data.id ? n = data : n
-    //   })
   };
 
   render() {
     return (
       <div>
-        {/* TASKNOTE Container */}
-        {/* <List.Group> */}
         {this.state.task_notes.map(n => {
           return <ul>
             Objectives: {n.objectives}<br></br>

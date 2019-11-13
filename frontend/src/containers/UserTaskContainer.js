@@ -48,13 +48,7 @@ class UserTaskContainer extends Component {
     //                 {t.takeaway}
     //             </div>
     //         )})
-    // }
-
-    handleClick = (e) => {
-        console.log(e)
-        console.log(e.target)
-        return <Route  to='/details' component={Details}>Details</Route>
-    }
+    // };
 
     render() {
         return (

@@ -23,7 +23,8 @@ fetchDelete = (event) => {
     headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        mode: "no-cors"
+        mode: "no-cors", 
+        Authorization: `Bearer ${localStorage.getItem('token')}`
         }
     })
     .then(response => response.json())
@@ -38,7 +39,8 @@ addComment = (event) => {
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            mode: "no-cors"
+            mode: "no-cors", 
+            Authorization: `Bearer ${localStorage.getItem('token')}`
         }
     }).then(response => response.json())
     .then(data => this.props.fetchComments())
@@ -65,10 +67,10 @@ addComment = (event) => {
                     <td>
                     <button className="button muted-button">Edit</button>
                     <button className="button muted-button" id={m.id} onClick={(event) => this.fetchDelete(event)}>Delete</button>
-                    {/* <Link to={`/comments/${m.id}`}>Comment</Link> */}
-                    <Button as={Link} to="/view_add_comment">
+                    {/* <Button as={Link} id={m.id} to="/view_add_comment">
                     View/Add Comment
-                    </Button>
+                    </Button> */}
+                    <Link id={m.id} to={`/view_add_comment/${m.id}`}>View/Add Comment</Link>
                     </td>
                 </tr>
                 ))

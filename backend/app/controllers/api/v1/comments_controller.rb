@@ -12,7 +12,7 @@ class Api::V1::CommentsController < ApplicationController
 
     def create
         @comment = Comment.new(comment_params)
-        @comment.save
+        @comment.save!
         render :json => @comment
     end
 
@@ -34,6 +34,6 @@ class Api::V1::CommentsController < ApplicationController
 private
 
     def comment_params
-        params.require(:comment).permit(:id, :text, :media_id, :user_id)
+        params.require(:comments).permit(:id, :feedback, :media_id, :user_id)
     end
 end
