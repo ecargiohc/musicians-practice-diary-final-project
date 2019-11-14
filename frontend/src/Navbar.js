@@ -70,16 +70,16 @@ class Navbar extends React.Component {
             background: 'green'
           }}
         ></MenuItem>
-        <MenuItem text="Media Forum"
+          <MenuItem text="Your Entries"
+            location="/user_tasks"
+            exact
+            style={link}
+            activeStyle={{
+              background: 'green'
+            }}
+          ></MenuItem>
+        <MenuItem text="Forum"
           location="/media"
-          exact
-          style={link}
-          activeStyle={{
-            background: 'green'
-          }}
-        ></MenuItem>
-        <MenuItem text="Your Entries"
-          location="/user_tasks"
           exact
           style={link}
           activeStyle={{

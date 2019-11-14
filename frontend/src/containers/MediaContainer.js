@@ -30,10 +30,12 @@ class MediaContainer extends Component {
     };
 
     deleteMedia = id => {
-    // console.log(id)
-    this.setState({
-        media: this.state.media.filter(m => m !== id)
-    })
+        let newMedia = this.state.media.slice()
+        const updatedMedia = newMedia.filter(m => m.id != id)
+        this.setState({
+            media: updatedMedia,
+            displayMedia: updatedMedia
+        }, () => console.log(this.state))
     };
 
     filterMedia = (type) => {
@@ -59,6 +61,20 @@ class MediaContainer extends Component {
             };
     };
 
+    sortMedia = (value) => {
+        console.log("SORT METHOD HERE")
+        let arr = [];
+        if (value === "Old") {
+          arr = this.state.displayMedia.sort((a, b) => a.created_at > b.created_at ? 1 : -1)
+        }
+        else if (value === "New") {
+          arr = this.state.displayMedia.sort((a, b) => a.created_at < b.created_at ? 1 : -1)
+        }
+        this.setState({
+          displayStocks: arr
+        })
+      };
+
     render() {
         return(
             <div className="container">
@@ -74,6 +90,7 @@ class MediaContainer extends Component {
                     <h2>View All Media</h2>
                     <MediaSearchBar 
                     // media={this.state.media} 
+                    sortMedia={this.sortMedia}
                     filterMedia={this.filterMedia}/>
                     <MediaTable 
                     media={this.state.media} 

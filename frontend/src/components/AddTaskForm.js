@@ -47,6 +47,7 @@ export default class AddTaskForm extends Component {
         .then(data => {
             this.createUserTask(data)
         })
+        // this.props.history.push('/user_tasks');
     };
 
     createUserTask = (data) => {
@@ -76,47 +77,57 @@ export default class AddTaskForm extends Component {
     render() {
         return(
             <Form onSubmit={this.handleSubmit}>
-                USERTASK FORM
-            <Form.Group widths='equal'>
-                <Form.Input 
+            <Form.Group 
+            widths='equal' 
+            >
+            {/* <div class="row">
+    <div class="col"> */}
+                <Form.Input
+                style={{width: "100px"}}
                 fluid label="Scales" 
-                placeholder="your scales" 
+                placeholder="scales" 
                 name="scales" 
                 value={this.state.scales} 
                 onChange={event => this.handleChange(event)}/>
                 <Form.Input 
+                style={{width: "100px"}}
                 fluid label="Arpeggios" 
-                placeholder="your arpeggios" 
+                placeholder="arpeggios" 
                 name="arpeggios" 
                 value={this.state.arpeggios} 
                 onChange={event => this.handleChange(event)}/>
                 <Form.Input 
+                style={{width: "100px"}}
                 fluid label="Etudes" 
-                placeholder="your etudes" 
+                placeholder="etudes" 
                 name="etudes" 
                 value={this.state.etudes} 
                 onChange={event => this.handleChange(event)}/>
                 <Form.Input 
+                style={{width: "100px"}}
                 fluid label="Sight Reading" 
-                placeholder="any sight reading today?" 
+                placeholder="sight reading?" 
                 name="sight_reading" 
                 value={this.state.sight_reading} 
                 onChange={event => this.handleChange(event)}/>
                 <Form.Input 
+                style={{width: "100px"}}
                 fluid label="Solo" 
-                placeholder="your soli" 
+                placeholder="soli" 
                 name="solo" 
                 value={this.state.solo} 
                 onChange={event => this.handleChange(event)}/>
                 <Form.Input 
+                style={{width: "100px"}}
                 fluid label="Concerto" 
-                placeholder="your concerti" 
+                placeholder="concerti" 
                 name="concerto" 
                 value={this.state.concerto} 
                 onChange={event => this.handleChange(event)}/>
                 <Form.Input 
+                style={{width: "100px"}}
                 fluid label="Excerpts" 
-                placeholder="your excerpts" 
+                placeholder="excerpts" 
                 name="excerpts" 
                 value={this.state.excerpts} 
                 onChange={event => this.handleChange(event)}/>

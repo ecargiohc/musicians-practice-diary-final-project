@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import AddTaskNoteForm from '../components/AddTaskNoteForm';
 import { ListGroup } from "react-bootstrap";
 
+
+
+// NOT USING ANYMORE 11/13: 2:40P
 class TaskNoteContainer extends Component {
   constructor() {
     super();

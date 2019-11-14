@@ -52,7 +52,7 @@ render() {
                 onChange={event => this.handleChange(event)}/>
                 <Form.Input 
                 fluid label="Link" 
-                placeholder="Url" 
+                placeholder="Provide a url link" 
                 name="url" 
                 value={this.state.url} 
                 onChange={event => this.handleChange(event)}/>

@@ -48,50 +48,57 @@ export default class AddSubTaskForm extends Component {
         }).then(res => res.json())
         // .then(data => console.log(data))
         .then(data => this.props.updateSubTasks(data))
+        this.props.history.push('/user_tasks')
     };
 
     render() {
         return(
             <Form onSubmit={this.handleSubmit}>
-                SUBTASK FORM
             <Form.Group widths='equal'>
                 <Form.Input 
+                style={{width: "100px"}}
                 fluid label="Tempo" 
                 placeholder="Tempo" 
                 name="tempo" 
                 value={this.state.tempo} 
                 onChange={event => this.handleChange(event)}/>
                 <Form.Input 
+                style={{width: "100px"}}
                 fluid label="Rhythm" 
                 placeholder="Rhythm" 
                 name="rhythm" 
                 value={this.state.rhythm} 
                 onChange={event => this.handleChange(event)}/>
                 <Form.Input 
+                style={{width: "100px"}}
                 fluid label="Articulation" 
                 placeholder="Articulation" 
                 name="articulation" 
                 value={this.state.articulation} 
                 onChange={event => this.handleChange(event)}/>
                 <Form.Input 
+                style={{width: "100px"}}
                 fluid label="Dynamics" 
                 placeholder="Dynamics" 
                 name="dynamics" 
                 value={this.state.dynamics} 
                 onChange={event => this.handleChange(event)}/>
                 <Form.Input 
+                style={{width: "100px"}}
                 fluid label="Phrasing" 
                 placeholder="Phrasing" 
                 name="phrasing" 
                 value={this.state.phrasing} 
                 onChange={event => this.handleChange(event)}/>
                 <Form.Input 
+                style={{width: "100px"}}
                 fluid label="Style" 
                 placeholder="Style" 
                 name="style" 
                 value={this.state.style} 
                 onChange={event => this.handleChange(event)}/>
                 <Form.Input 
+                style={{width: "100px"}}
                 fluid label="Intonation" 
                 placeholder="Intonation" 
                 name="intonation" 

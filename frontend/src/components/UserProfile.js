@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Grid, Segment, Label, Button } from 'semantic-ui-react';
 // import Img from 'react-image';
 
+// //NOT USING THIS FILE ANYMORE
 export default class UserProfile extends Component {
     state = {
         user_tasks: []

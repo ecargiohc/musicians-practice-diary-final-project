@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { api } from '../services/api';
 import DateFile from './DateFile';
 import AddTaskForm from "./AddTaskForm";
-import AddTaskNoteForm from "./AddTaskNoteForm";
-import AddSubTaskForm from "./AddSubTaskForm";
+import { Image } from "react-bootstrap";
 
 export default class HomePage extends Component {
   state = {
@@ -25,21 +24,15 @@ export default class HomePage extends Component {
         return (
           <div>
             <DateFile />
+            {/* <Image src={this.props.currentUser.photo} */}
             {!!this.props.currentUser.id ? 
             ( <a className="item">
               Welcome {this.props.currentUser.username} !</a>
             ) : null }
-            {/* <AddTaskNoteForm 
-            currentUser={this.props.currentUser}
-            updateUserTasks={this.props.updateUserTasks}
-            /> */}
             <AddTaskForm 
             currentUser={this.props.currentUser}
             updateUserTasks={this.props.updateUserTasks}
             />
-            {/* <AddSubTaskForm 
-            currentUser={this.props.currentUser}
-            /> */}
           </div>
         )
     }

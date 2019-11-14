@@ -4,6 +4,16 @@ const MediaSearchBar= (props) => {
 
     return(
         <div>
+            <strong>Sort by:</strong>
+            <label>
+                <input type="radio" value="Old" checked={null} onChange={(e) => props.sortMedia(e.target.value)}/>
+                Old
+            </label>
+            <label>
+                <input type="radio" value="New" checked={null} onChange={(e) => props.sortMedia(e.target.value)}/>
+                 New
+            </label><br></br>
+
         <label>
             <strong>Filter: </strong>
             <select onChange={(e)=>props.filterMedia(e.target.value)}>

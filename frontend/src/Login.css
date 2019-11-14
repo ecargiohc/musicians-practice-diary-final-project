@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
-.center{
+/* .center{
     font-family: 'Raleway', sans-serif;
     background-color: #ddcbc0;
     position: absolute;
@@ -15,7 +15,7 @@
     background-color: #fff;
     border-radius: 15px;
     padding: 0.8rem;
-}
+} */
 
 .card > form{
     display: flex;

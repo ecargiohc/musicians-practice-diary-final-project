@@ -8,11 +8,8 @@ import { Embed } from 'semantic-ui-react'
 class MediaTable extends Component {
     state = {
         displayMedia: []
-    }
+    };
     
-componentDidMount() {
-    // this.fetchDelete();
-};
 fetchDelete = (event) => {
     event.preventDefault();
     // debugger
@@ -29,7 +26,7 @@ fetchDelete = (event) => {
     })
     .then(response => response.json())
     .then(this.props.deleteMedia(event.target.id))
-    .catch(err => alert(err))
+    .catch(err => console.log(err))
     }
 };
 addComment = (event) => {
@@ -65,11 +62,8 @@ addComment = (event) => {
                     <a href={m.url} target="_blank">{m.url}</a>
                     <td>{m.user.username}</td>
                     <td>
-                    <button className="button muted-button">Edit</button>
+                    {/* <button className="button muted-button">Edit</button> */}
                     <button className="button muted-button" id={m.id} onClick={(event) => this.fetchDelete(event)}>Delete</button>
-                    {/* <Button as={Link} id={m.id} to="/view_add_comment">
-                    View/Add Comment
-                    </Button> */}
                     <Link id={m.id} to={`/view_add_comment/${m.id}`}>View/Add Comment</Link>
                     </td>
                 </tr>

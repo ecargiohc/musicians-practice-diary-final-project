@@ -40,7 +40,7 @@ export default class AddCommentForm extends Component {
         }).then(res => res.json())
         .then(data => console.log(data))
         // 11/12: 11:20A: NEED UPDATE FETCH METHOD. 
-        // .then(data => this.props.fetchAllComments())
+        .then(data => this.props.fetchAllComments())
     };
 
     render() {
@@ -48,6 +48,7 @@ export default class AddCommentForm extends Component {
             <Form onSubmit={this.handleSubmit}>
             <Form.Group widths='equal'>
                 <Form.Input 
+                // as = "text area"
                 fluid label="Give Feedback" 
                 placeholder="constructive criticism only!" 
                 name="feedback" 
