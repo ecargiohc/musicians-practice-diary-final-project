@@ -21,14 +21,27 @@ export default class HomePage extends Component {
     };
 
     render() {
+      var letterStyle = {
+        // padding: 10,
+        // margin: 10,
+        // backgroundColor: "#ffde00",
+        // color: "#333",
+        // display: "inline-block",
+        // fontFamily: "monospace",
+        fontSize: 14,
+        textAlign: "center"
+    };
         return (
           <div>
-            <DateFile />
+            <DateFile /><br></br>
             {/* <Image src={this.props.currentUser.photo} */}
             {!!this.props.currentUser.id ? 
             ( <a className="item">
               Welcome {this.props.currentUser.username} !</a>
             ) : null }
+            {/* <br></br><br></br>
+            <div style={letterStyle}><cite>What are you practicing today?</cite></div>
+            <br></br> */}
             <AddTaskForm 
             currentUser={this.props.currentUser}
             updateUserTasks={this.props.updateUserTasks}

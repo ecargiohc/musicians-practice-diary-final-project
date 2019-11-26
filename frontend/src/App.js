@@ -104,6 +104,7 @@ class App extends Component {
   };
 
   login = data => {
+    console.log("this is the app data for login", data)
     const updatedState = { ...this.state.auth, user: data };
     localStorage.setItem("token", data.jwt);
     this.setState({ auth: updatedState });

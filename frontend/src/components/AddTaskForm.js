@@ -71,6 +71,8 @@ export default class AddTaskForm extends Component {
             .then(resp => resp.json())
             // .then(data => console.log(data))
             .then(data => this.props.updateUserTasks(data))
+    // MAKE ALERT MESSAGE HERE AND DO A REDIRECT/ROUTE TO USERTASK PAGE
+    // alert(`Welcome ${this.state.username}! Go ahead and log in with your new username and password :)`)
         // })
     };
     

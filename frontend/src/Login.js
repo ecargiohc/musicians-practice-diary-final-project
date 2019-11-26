@@ -25,6 +25,7 @@ class Login extends React.Component {
         console.log("LOGIN")
         e.preventDefault();
         api.auth.login(this.state.fields).then(res => {
+            console.log("this is the login component", res)
             if (!res.error) {
                 const updatedState = {...this.state.auth, user: res};
                 this.props.handleLogin(res);
@@ -42,7 +43,7 @@ class Login extends React.Component {
             <div className="center">
                 {this.state.error ? <h1>Try again!</h1> : null}
                 <div className="card">
-                    <h1>Login</h1>
+                    <h1>Musician Login</h1>
                     <form onSubmit={this.handleSubmit}>
                         <input
                             className="form-item"
@@ -62,7 +63,7 @@ class Login extends React.Component {
                             className="form-submit"
                             value="Login!"
                             type="submit"
-                        />
+                        /><br></br>
                         <Link 
                             to='/new_user' 
                         >Don't have an account?</Link>

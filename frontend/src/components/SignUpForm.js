@@ -105,12 +105,14 @@ class SignUpForm extends React.Component {
             <Form onSubmit={this.handleSubmit}>
             <Form.Group widths='equal'>
                 <Form.Input
+                style={{width: "140px"}}
                 fluid label="Username" 
                 placeholder="Create a Username" 
                 name="username" 
                 // value={this.state.name} 
                 onChange={(e, d) => this.handleInstrument(e, d)}/>
                 <Form.Input 
+                style={{width: "140px"}}
                 fluid label="Password" 
                 placeholder="Create a Password" 
                 name="password" 
@@ -119,6 +121,7 @@ class SignUpForm extends React.Component {
 
                 {/* this form below needs to take in value and store it to state */}
             <Form.Select
+            style={{width: "150px"}}
             fluid
             label='Instrument'
             name='instrument'
@@ -136,14 +139,16 @@ class SignUpForm extends React.Component {
                 onChange={(e, d) => this.handleInstrument(e, d)}/> */}
 
                 <Form.Input 
+                style={{width: "130px"}}
                 fluid label="Resume" 
-                placeholder="resume" 
+                placeholder="resume file" 
                 name="resume" 
                 // value={this.state.resume} 
                 onChange={(e, d) => this.handleInstrument(e, d)}/>
                 <Form.Input 
+                style={{width: "130px"}}
                 fluid label="Photo" 
-                placeholder="photo" 
+                placeholder="photo file" 
                 name="photo" 
                 // value={this.state.photo} 
                 onChange={(e, d) => this.handleInstrument(e, d)}/>
