@@ -69,17 +69,7 @@ class SignUpForm extends React.Component {
         .then(data => {
             console.log(data)
             alert(`Welcome ${this.state.username}! Go ahead and log in with your new username and password :)`)
-            this.props.history.push('/login')
-            // if (!data.ok) {
-            //     this.setState({
-            //         error: true
-            //     }), 
-            // }
-    //         else {
-    //         return (
-    //             // this.api.auth.login()
-    //             ) 
-    // }           
+            this.props.history.push('/login')         
      })
     };
     
