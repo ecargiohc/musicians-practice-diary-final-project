@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { Grid, Segment, Label, Button } from 'semantic-ui-react';
-// import Img from 'react-image';
 
 // //NOT USING THIS FILE ANYMORE
 export default class UserProfile extends Component {
@@ -29,16 +28,13 @@ export default class UserProfile extends Component {
                     <Segment>
                     <h5>Welcome Back,</h5><h2>{this.props.currentUser.username} !</h2>
                     <Label 
-                    // image={this.props.currentUser.photo} 
                     image="https://66.media.tumblr.com/978b4614b2e9838c317a02e853442842/tumblr_p69sqaQOOM1s4yg05o1_1280.jpg"
                     />
-                    {/* <Img /> */}
                 <h5>{this.props.currentUser.instrument}</h5>
                 <p>your current resume: {this.props.currentUser.resume}</p>
                 <Button as={Link} to="/media">
                 Share media
                 </Button>
-                {/* <Link to={'/media'}>Share a media file</Link> */}
                     </Segment>
                 </Grid.Column>
                 <Grid.Column>
@@ -49,7 +45,6 @@ export default class UserProfile extends Component {
                     </Segment>
                     <Segment>
                         <Button as={Link} 
-                        // to="/user_tasks/current_user"
                         to="user_tasks"
                         >
                             View Your Logs
@@ -59,7 +54,6 @@ export default class UserProfile extends Component {
                 <Grid.Column>
                     <Segment>
                         <Button as={Link} 
-                        // to="/media/current_user"
                         to="/media"
                         >
                             View Your Media
@@ -67,13 +61,11 @@ export default class UserProfile extends Component {
                     </Segment>
                     <Segment>
                         <Button as={Link} 
-                        // to="/comments/current_user"
                         to="/comments"
                         >
                             Feedback Received 
                         </Button>
                     </Segment>
-                    {/* <Segment>3</Segment> */}
                 </Grid.Column>
                 </Grid.Row>
             </Grid>
