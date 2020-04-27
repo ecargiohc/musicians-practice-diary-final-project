@@ -36,7 +36,6 @@ export default class AddMediaForm extends Component {
                 }
             })
         }).then(res => res.json())
-        // .then(data => console.log(data))
         .then(data => this.props.fetchAllMedia())
     };
     
