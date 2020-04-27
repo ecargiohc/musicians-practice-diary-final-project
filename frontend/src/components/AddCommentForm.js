@@ -8,8 +8,6 @@ export default class AddCommentForm extends Component {
             user: {}
         },
         media: {}
-        // media_id: 2,
-        // user_id: 1
     };
 
     handleChange = e => {
@@ -48,7 +46,6 @@ export default class AddCommentForm extends Component {
             <Form onSubmit={this.handleSubmit}>
             <Form.Group widths='equal'>
                 <Form.Input 
-                // as = "text area"
                 fluid label="Give Feedback" 
                 placeholder="constructive criticism only!" 
                 name="feedback" 
