@@ -18,9 +18,6 @@ export default class AddSubTaskForm extends Component {
     };
 
     handleSubmit = (event) => {
-        // console.log(this.state)
-        // having the user_task_id and task_id be the same for now
-        // const user_task_id = this.props.match.params
         const task_id = this.props.match.params
         console.log(task_id)
         event.preventDefault();
