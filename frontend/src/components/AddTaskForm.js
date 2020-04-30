@@ -17,7 +17,6 @@ export default class AddTaskForm extends Component {
     handleChange = e => {
         this.setState({[e.target.name]: e.target.value})
     };
-// just create a new task (via fetch post) and then you can associate that to an existing user via the user_task controller
     handleSubmit = (event) => {
         console.log(this.state)
         event.preventDefault();
