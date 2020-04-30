@@ -81,8 +81,6 @@ export default class AddTaskForm extends Component {
             <Form.Group 
             widths='equal' 
             >
-            {/* <div class="row">
-    <div class="col"> */}
                 <Form.Input
                 style={{width: "100px"}}
                 fluid label="Scales" 
