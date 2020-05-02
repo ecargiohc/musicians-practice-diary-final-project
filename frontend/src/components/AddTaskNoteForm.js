@@ -36,7 +36,6 @@ export default class AddTaskNoteForm extends Component {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
-                // mode: "no-cors",
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({ 
