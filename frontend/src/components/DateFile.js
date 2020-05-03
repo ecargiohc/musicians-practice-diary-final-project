@@ -1,5 +1,4 @@
 import React from 'react';
-// var FontAwesome = require('react-fontawesome');
 
 export default class DateFile extends React.Component {
     constructor() {
