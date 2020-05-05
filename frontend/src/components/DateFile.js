@@ -15,7 +15,6 @@ export default class DateFile extends React.Component {
     render() {
         return (
             <div className='date'>
-                {/* <FontAwesome name='calendar' /> */}
                 {this.state.date}
             </div>
         );
