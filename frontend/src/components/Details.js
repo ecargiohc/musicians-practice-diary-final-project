@@ -13,7 +13,6 @@ const Details = (props) => {
             <Link {...props} id={user_task_id} to={`/addtasknote/${user_task_id}`}>Add Notes</Link>
             {props.task_notes.map(n => {
                 if (user_task_id == n.user_task.id) {
-                    // console.log(n)
                     return (
                         <Accordion defaultActiveKey="0">
                         {/* <Button id={n.id} onClick={(event) => props.startEditingNote(event)}>Edit?</Button> */}
@@ -46,7 +45,6 @@ const Details = (props) => {
             </Card>
             </Accordion>
                 )}})}
-            {/* <label>tasknotes</label> */}
             {/* <Link id={user_task_id} to={`/addtasknote/${user_task_id}`}>Add TaskNote</Link>
             {props.task_notes.map(n => {
                 if (user_task_id == n.user_task.id) {
@@ -72,7 +70,6 @@ const Details = (props) => {
                 })}
             </div> */} 
         <div>
-        {/* <label>subtasks</label> */}
             <Link id={user_task_id} to={`/addsubtask/${user_task_id}`}>Add Details</Link>
             {props.sub_tasks.map(s => {
                     if (user_task_id == s.task.id) {
