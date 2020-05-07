@@ -45,17 +45,6 @@ const Details = (props) => {
             </Card>
             </Accordion>
                 )}})}
-            {/* <Link id={user_task_id} to={`/addtasknote/${user_task_id}`}>Add TaskNote</Link>
-            {props.task_notes.map(n => {
-                if (user_task_id == n.user_task.id) {
-                    console.log(n)
-                    return (
-                    <div><ul>objectives: <br></br>{n.objectives}</ul>
-                        <ul>progress report: <br></br>{n.progress_report}</ul>
-                        <ul>takeaways: <br></br>{n.takeaway}</ul>
-                    </div>)
-                }
-            })} */}
             {/* <div>
             subtasks
             <Link id={user_task_id} to={`/addsubtask/${user_task_id}`}>Add SubTask</Link>
