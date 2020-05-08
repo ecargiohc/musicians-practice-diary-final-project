@@ -45,19 +45,6 @@ const Details = (props) => {
             </Card>
             </Accordion>
                 )}})}
-            {/* <div>
-            subtasks
-            <Link id={user_task_id} to={`/addsubtask/${user_task_id}`}>Add SubTask</Link>
-            {props.sub_tasks.map(s => {
-                    if (user_task_id == s.task.id) {
-                        console.log(s)
-                        return ( <div>
-                        <li>{s.tempo}</li>
-                            {/* <li>{s.rhythm}</li> */}
-                        {/* </div>)
-                    }
-                })}
-            </div> */} 
         <div>
             <Link id={user_task_id} to={`/addsubtask/${user_task_id}`}>Add Details</Link>
             {props.sub_tasks.map(s => {
