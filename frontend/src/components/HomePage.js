@@ -28,7 +28,7 @@ export default class HomePage extends Component {
         return (
           <div>
             <DateFile /><br></br>
-            {/* <Image src={this.props.currentUser.photo} */}
+          
             {!!this.props.currentUser.id ? 
             ( <a className="item">
               Welcome {this.props.currentUser.username} !</a>
