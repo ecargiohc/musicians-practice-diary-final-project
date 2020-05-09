@@ -48,7 +48,7 @@ class MediaContainer extends Component {
             }
                 );
             // console.log(array)
-            // haddebugger;
+            
             this.setState({
                 displayMedia: array
               })

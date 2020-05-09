@@ -47,7 +47,6 @@ class SignUpForm extends React.Component {
         // };
         
     handleSubmit = (e) => {
-        // signUp = (e) => {
         e.preventDefault()
         fetch('http://localhost:3000/api/v1/users', {
             method: 'POST',
