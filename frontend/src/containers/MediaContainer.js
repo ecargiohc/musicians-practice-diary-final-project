@@ -89,7 +89,6 @@ class MediaContainer extends Component {
                     <div className="flex-large">
                     <h2>View All Media</h2>
                     <MediaSearchBar 
-                    // media={this.state.media} 
                     sortMedia={this.sortMedia}
                     filterMedia={this.filterMedia}/>
                     <MediaTable 
